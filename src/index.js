@@ -2,9 +2,7 @@
 
 require('./utils/object-assign');
 
-module.exports = require('./Interactable');
-
 module.exports = {
-  Interactable: require('./Interactable'),
-  Draggable: require('./Draggable'),
+  Interactable: require('./Interactable.jsx'),
+  Draggable: require('./Draggable.jsx'),
 };
