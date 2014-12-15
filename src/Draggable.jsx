@@ -1,9 +1,11 @@
 'use strict';
 
 var React = require('react');
-var Interactable = require('./Interactable');
+var Interactable = require('./Interactable.jsx');
 
 var warning = 'Interactable mixin must be included first.';
+
+var _ = require('lodash');
 
 module.exports = {
   dragMove(e, options) {
@@ -39,12 +41,12 @@ module.exports = {
 
     var data = { x: 0, y: 0 };
 
-    var style = {
-      ...getTranslateStyle(data),
-      position: null,
-      left: null,
-      top: null
-    };
+    var style = _.merge({},
+      getTranslateStyle(data),
+      { position: null,
+        left: null,
+        top: null }
+    );
 
     this.setInteractState({
       data: data,
@@ -53,12 +55,12 @@ module.exports = {
   },
 
   fixToTarget(target) {
-    var style = {
-      ...getTranslateStyle({ x: 0, y: 0 }),
-      position: 'absolute',
-      left: target.offsetLeft,
-      top: target.offsetTop
-    };
+    var style = _.merge({}, 
+      getTranslateStyle({ x: 0, y: 0 }),
+      { position: 'absolute',
+        left: target.offsetLeft,
+        top: target.offsetTop }
+    );
 
     this.setInteractState({
       style: style

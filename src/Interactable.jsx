@@ -2,6 +2,8 @@
 
 var interact = require('interact');
 
+var _ = require('lodash');
+
 interact.dynamicDrop(true);
 
 var Interactable = {
@@ -29,8 +31,8 @@ var Interactable = {
 
     this.setState({
       interactState: {
-        data: {...interactState.data, ...state.data},
-        style: {...interactState.style, ...state.style},
+        data: _.merge({}, interactState.data, state.data),
+        style: _.merge({}, interactState.style, state.style),
       }
     });
   },
@@ -40,7 +42,7 @@ var Interactable = {
   },
 
   getInteractStyle(style) {
-    return {...this.state.interactState.style, ...style};
+    return _.merge({}, this.state.interactState.style, style);
   }
 };
 
