@@ -1,6 +1,6 @@
 'use strict';
 
-var interact = require('interact');
+var interact = require('interact.js');
 
 var _ = require('lodash');
 
